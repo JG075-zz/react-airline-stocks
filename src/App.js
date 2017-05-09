@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import fs from 'fs';
+import {LineChart} from 'react-d3-basic';
+import Chart from './Chart';
 import './App.css';
 
 const data = require('../data/airlines');
@@ -8,23 +8,14 @@ const data = require('../data/airlines');
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-  }
-
-  componentWillMount() {
-    console.log(data);
+    this.state = { data: data };
   }
 
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <h1>US Airline Stock Prices After 09/04/2017 Incident</h1>
+        <Chart data={this.state.data}/>
       </div>
     );
   }
