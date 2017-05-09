@@ -1,14 +1,30 @@
 import React, { Component } from 'react';
-import {LineChart} from 'react-d3-basic';
-import Chart from './Chart';
+import Chart from './chart';
 import './App.css';
 
-const data = require('../data/airlines');
+const data = require('../data/one');
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = { data: data };
+  }
+
+  componentWillMount() {
+    this.setState({
+      data: data.map(d => ({
+          ...d,
+          x: Number(this._convertDate(d.Date)),
+          y: Number(d.StockPrice)
+        }
+      ))
+    })
+  }
+
+  _convertDate(date) {
+    date = date.split("/");
+    var newDate = date[1]+"/"+date[0]+"/"+date[2];
+    return new Date(newDate).getTime();
   }
 
   render() {

@@ -11,6 +11,7 @@
 
 # misc
 data/
+.jshintrc
 .DS_Store
 .env
 npm-debug.log*
