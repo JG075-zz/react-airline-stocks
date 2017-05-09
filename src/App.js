@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Chart from './chart';
 import './App.css';
 
-const data = require('../data/one');
+const data = require('../data/airlines');
 
 class App extends Component {
   constructor(props) {
@@ -11,13 +11,25 @@ class App extends Component {
   }
 
   componentWillMount() {
+    var dataArray = [[]];
+    var curretArr = 0;
+    var _this = this;
+
+    data.forEach(function(item, index) {
+      if (item.Date == '07/04/2017') {
+        dataArray.push([]);
+        curretArr++;
+      }
+      item.x = Number(_this._convertDate(item.Date));
+      item.y = Number(item.StockPrice);
+
+      dataArray[curretArr].push(item);
+    });
+    dataArray.splice(0, 1);
+
+    console.log(dataArray);
     this.setState({
-      data: data.map(d => ({
-          ...d,
-          x: Number(this._convertDate(d.Date)),
-          y: Number(d.StockPrice)
-        }
-      ))
+      data: dataArray
     })
   }
 

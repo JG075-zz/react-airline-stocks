@@ -14,3 +14,25 @@ body {
 .rv-xy-plot__grid-lines__line {
   stroke: #eaeaea;
 }
+
+.rv-discrete-color-legend {
+  margin-top: 20px;
+  font-size: 14px;
+  float: left;
+  text-align: center;
+  margin-right: auto;
+}
+
+.rv-discrete-color-legend div {
+  float: left;
+  padding: 0 14px;
+}
+
+.rv-discrete-color-legend-item__color {
+    background: #dcdcdc;
+    display: inline-block;
+    height: 2px;
+    vertical-align: middle;
+    width: 14px;
+    margin-right: 10px;
+}

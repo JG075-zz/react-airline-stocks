@@ -3,6 +3,7 @@ import {
   Hint,
   HorizontalGridLines,
   LineSeries,
+  DiscreteColorLegend,
   VerticalGridLines,
   XAxis,
   XYPlot,
@@ -31,22 +32,36 @@ export default class Chart extends Component {
 
   render() {
     const {data} = this.props;
-    const {value} = this.state;
+    var lines = data.map(function(item) {
+      return <LineSeries
+        data={item}
+        style={{background: '#fffff'}}
+      />
+    });
+
+    var legendItems = data.map(function(item) {
+      return {
+        title: item[0].Company,
+        disabled: false
+      }
+    })
+
     return <div>
      <XYPlot
       margin={{top:10, left: 60, right: 5, bottom: 30}}
-      width={945}
-      height={400}
+      width={1000}
+      height={600}
       >
       <HorizontalGridLines />
       <VerticalGridLines />
-      <LineSeries
-        data={data}
-        style={{background: '#fffff'}}
-      />
-    <XAxis title="Date" xType="time" xDomain = {[1491519600000, 1493938800000]} xRange = {[0, 2000]}/>
+      {lines}
+      <XAxis title="Date" xType="time" tickTotal={4}/>
       <YAxis title="StockPrice"/>
     </XYPlot>
+    <DiscreteColorLegend
+      width={1300}
+      items={legendItems}
+    />
   </div>
   }
 }
