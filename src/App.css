@@ -2,6 +2,14 @@ body {
   text-align: center;
 }
 
+.chartLabel {
+  height: 20px;
+  width: 150px;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 5px;
+}
+
 .rv-xy-plot {
   margin-left: auto;
   margin-right: auto;
